@@ -1,0 +1,44 @@
+{
+	"whiskies": {
+		"bourbon": [
+
+		],
+		"irish": [
+
+		],
+		"japanese": [
+
+		],
+		"rye": [
+			
+		],
+		"scotch": [
+			{
+				"name": "Lagavulin 16 Yr",
+				"style": "Peated Single Malt",
+				"country": "Islay, Scotland",
+				"rating": "93",
+				"tastingNotes": {
+					"nose": "Smoked Brisket, Leather, Orange Peel, Salt",
+					"palette": "Smooth, Peat Smoke, Salt",
+					"finish": "Long, Brine, Sweet Peat Smoke, Salty"
+				}
+			},
+			{
+				"name": "Glengoyne 21 Yr",
+				"style": "Single Malt",
+				"country": "Highlands, Scotland",
+				"rating": "92",
+				"tastingNotes": {
+					"nose": "Christmas Cake, Dark Fruits, Chocolate",
+					"palette": "Christmas Cake, Dark Fruit, Nutty",
+					"finish": "Medium, Spices, Oak, Choclate, Dark Fruit"
+				}
+			}
+		]
+	}
+}
+
+
+	
+	
