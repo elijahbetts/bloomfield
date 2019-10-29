@@ -1,26 +1,28 @@
 <template>
 	<div id="app">
-		<img alt="Vue logo" src="./assets/logo.png">
+		<Whiskies />
 	</div>
 </template>
 
 <script>
+	import Whiskies from './components/Whiskies.vue';
+
 	export default {
 		name: 'app',
-		data() {
-			return {
-				prices: {}
-			}
+		components: {
+			Whiskies
 		},
-		mounted() {
-			this.$http.get('https://api.coindesk.com/v1/bpi/currentprice.json').then(
-				response => { this.prices = response.data.bpi }
-			);
-		}
 	}
 </script>
 
 <style>
+	html {
+		background-color: #efefef;
+	}
+	body {
+		width: 100%;
+		margin: 0 auto 0;
+	}
 	#app {
 		text-align: center;
 	}
