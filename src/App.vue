@@ -7,8 +7,15 @@
 <script>
 	export default {
 		name: 'app',
-		methods: {
-			
+		data() {
+			return {
+				prices: {}
+			}
+		},
+		mounted() {
+			this.$http.get('https://api.coindesk.com/v1/bpi/currentprice.json').then(
+				response => { this.prices = response.data.bpi }
+			);
 		}
 	}
 </script>

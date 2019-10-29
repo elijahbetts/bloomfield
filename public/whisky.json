@@ -1,0 +1,33 @@
+{
+	"type": {
+		"bourbon": [
+
+		],
+		"irish": [
+
+		],
+		"japanese": [
+
+		],
+		"rye": [
+			
+		],
+		"scotch": [
+			{
+				"name": "Lagavulin 16 Yr",
+				"style": "Peated Single Malt",
+				"country": "Islay, Scotland",
+				"rating": "93",
+				"tastingNotes": {
+					"nose": "smoked brisket, leather, orange peel, salt",
+					"palette": "smooth, peat smoke, salt",
+					"finish": "long, brine, sweet peat smoke, salty"
+				}
+			}
+		]
+	}
+}
+
+
+	
+	
