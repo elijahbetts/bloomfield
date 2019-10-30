@@ -10,16 +10,9 @@
 						<div class="rating"><span class="number">{{ scotch.rating }}</span><img src="../assets/rating-star.svg" /></div>
 					</div>
 				</div>
-				
-
-
-				
-				
 			</div>
 		</div>
 
-
-		
 	</div>
 </template>
 
@@ -50,8 +43,8 @@
 		padding: 0 15px;
 	}
 	.whisky {
-		display: block;
-		width: 100%;
+		display: inline-block;
+		width: 50%;
 		height: 80px;
 		text-align: left;
 		background-color: #fdfdfd;
