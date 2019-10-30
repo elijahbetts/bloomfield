@@ -1,16 +1,25 @@
 <template>
 	<div id="whiskies">
-		<div class="whisky" v-for="scotch in whiskies.scotch" :key="scotch.name">
-			<div class="name">{{ scotch.name }}</div>
-			<div class="location">{{ scotch.style }} // {{ scotch.country }}</div>
-			<div class="rating">Rating: {{ scotch.rating }} / 100</div>
-			<div class="notes">
-				<div class="title">Tasting Notes</div>
-				<div class="note">N: {{ scotch.tastingNotes.nose }}</div>
-				<div class="note">P: {{ scotch.tastingNotes.palette }}</div>
-				<div class="note">F: {{ scotch.tastingNotes.finish }}</div>
+
+		<div class="whiskies">
+			<div class="whisky" v-for="scotch in whiskies.scotch" :key="scotch.name">
+				<div class="wrapper">
+					<div class="inner">
+						<div class="name">{{ scotch.name }}</div>
+						<div class="location">{{ scotch.style }}, {{ scotch.country }}</div>
+						<div class="rating"><span class="number">{{ scotch.rating }}</span><img src="../assets/rating-star.svg" /></div>
+					</div>
+				</div>
+				
+
+
+				
+				
 			</div>
 		</div>
+
+
+		
 	</div>
 </template>
 
@@ -32,34 +41,67 @@
 <style scoped>
 	#whiskies {
 		position: relative;
-		max-width: 1400px;
+		max-width: 1280px;
+		min-width: 500px;
 		margin: 0 auto;
 		padding: 100px 0;
-	} 
-
+	}
+	.whiskies {
+		padding: 0 15px;
+	}
 	.whisky {
-		display: inline-block;
-		width: 380px;
-		background-color: #ffffff;
-		margin: 0 10px;
-		padding: 20px;
+		display: block;
+		width: 100%;
+		height: 80px;
+		text-align: left;
+		background-color: #fdfdfd;
+		margin-bottom: 15px;
+		cursor: pointer;
 	}
-
-	.name {
+	.whisky .wrapper {
+		height: 100%;
+		padding: 0 15px;
+	}
+	.whisky .inner {
+		position: relative;
+		display: table;
+		width: 100%;
+		height: 100%;
+	}
+	.whisky .name {
+		display: table-cell;
+		width: 30%;
 		font-family: "Arial Black";
-		font-size: 20px;
+		font-size: 16px;
+		line-height: 20px;
 		text-transform: uppercase;
+		vertical-align: middle;
+		padding-right: 30px;
 	}
-
-	.location {
-		font-family: Arial;
+	.whisky .location {
+		display: table-cell;
+		width: 30%;
 		font-size: 14px;
-		text-transform: uppercase;
-		margin-bottom: 20px;	
+		color: #cd2a1e;
+		line-height: 16px;
+		vertical-align: middle;
 	}
-
-	.rating {
-		margin-bottom: 20px;
+	.whisky .rating {
+		display: table-cell;
+		width: 15%;
+		font-family: "Arial Black";
+		font-size: 32px;
+		text-align: right;
+		vertical-align: middle;
+	}
+	.whisky .rating .number {
+		vertical-align: middle;
+	}
+	.whisky .rating img {
+		width: 20px;
+		height: 20px;
+		vertical-align: middle;
+		padding-left: 5px;
 	}
 
 	.notes {
