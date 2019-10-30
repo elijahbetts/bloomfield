@@ -17,13 +17,15 @@
 
 <style>
 	html {
-		background-color: #efefef;
+		background-color: #2d2f31;
 	}
 	body {
 		width: 100%;
 		margin: 0 auto 0;
 	}
 	#app {
+		font-family: Arial;
+		color: #000000;
 		text-align: center;
 	}
 </style>
