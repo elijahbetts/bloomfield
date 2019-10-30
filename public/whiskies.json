@@ -1,44 +1,64 @@
 {
-	"whiskies": {
-		"bourbon": [
-
-		],
-		"irish": [
-
-		],
-		"japanese": [
-
-		],
-		"rye": [
-			
-		],
-		"scotch": [
-			{
-				"name": "Lagavulin 16 Yr",
-				"style": "Peated Single Malt",
-				"country": "Islay, Scotland",
-				"rating": "93",
-				"tastingNotes": {
-					"nose": "Smoked Brisket, Leather, Orange Peel, Salt",
-					"palette": "Smooth, Peat Smoke, Salt",
-					"finish": "Long, Brine, Sweet Peat Smoke, Salty"
-				}
-			},
-			{
-				"name": "Glengoyne 21 Yr",
-				"style": "Single Malt",
-				"country": "Highlands, Scotland",
-				"rating": "92",
-				"tastingNotes": {
-					"nose": "Christmas Cake, Dark Fruits, Chocolate",
-					"palette": "Christmas Cake, Dark Fruit, Nutty",
-					"finish": "Medium, Spices, Oak, Choclate, Dark Fruit"
-				}
+	"whiskies": [
+		{
+			"id": "glengoyne-21",
+			"name": "Glengoyne 21 Year",
+			"style": "Single Malt",
+			"country": "Highlands, Scotland",
+			"rating": "92",
+			"notes": {
+				"nose": "Christmas Cake, Dark Fruits, Chocolate",
+				"palette": "Christmas Cake, Dark Fruit, Nutty",
+				"finish": "Medium, Baking Spices, Oak, Dark Fruit, Choclate"
 			}
-		]
-	}
+		},
+		{
+			"id": "lagavulin-16",
+			"name": "Lagavulin 16 Year",
+			"style": "Peated Single Malt",
+			"country": "Islay, Scotland",
+			"rating": "93",
+			"notes": {
+				"nose": "Smoked Brisket, Leather, Orange Peel, Salt",
+				"palette": "Smooth, Peat Smoke, Salt",
+				"finish": "Long, Brine, Sweet Peat Smoke, Salty"
+			}
+		},
+		{
+			"id": "glendronach-revival-15",
+			"name": "Glendronach Revival 15 Year",
+			"style": "Single Malt",
+			"country": "Highlands, Scotland",
+			"rating": "91",
+			"notes": {
+				"nose": "Dark Fruits, Toffee, Chocolate",
+				"palette": "Dark Fruit, Oak Spice, Toffee, Chocolate",
+				"finish": "Medium, Drying,Sherry, Oak, Chocolate"
+			}
+		},
+		{
+			"id": "highland-park-18",
+			"name": "Highland Park 18 Year",
+			"style": "Peated Single Malt",
+			"country": "Island, Scotland",
+			"rating": "91",
+			"notes": {
+				"nose": "Peat, Orange Peel, Vanilla",
+				"palette": "Smooth, Balanced, Toffee, Citrus, Cereal",
+				"finish": "Medium, Dry, Oak, Salt, Peat, Pepper"
+			}
+		},
+		{
+			"id": "hibiki-japanese-harmony",
+			"name": "Hibiki Japanese Harmony",
+			"style": "Blended",
+			"country": "Japan",
+			"rating": "87",
+			"notes": {
+				"nose": "Apple, Floral, Oak, Malt",
+				"palette": "Rich, Cereal, Buttery, Oak, Honey",
+				"finish": "Medium, Light Smoke, Apple, Light Oak"
+			}
+		}
+	]
 }
-
-
-	
-	
