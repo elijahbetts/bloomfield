@@ -1,7 +1,7 @@
 <template>
 	<div id="whiskies">
 		<div class="whiskies">
-			<router-link class="whisky" v-for="whisky in whiskies" :key="whisky.id" :to="{ path: '/review/' + whisky }">
+			<router-link class="whisky" v-for="whisky in whiskies" :key="whisky.id" :to="{ path: '/review/' + whisky.id }">
 				<div class="wrapper">
 					<div class="inner">
 						<div class="cell name">{{ whisky.name }}</div>
@@ -22,7 +22,7 @@
 				whiskies: {}
 			}
 		},
-		async mounted() {
+		async created() {
 			let response = await this.$http.get('/whiskies.json');
 			this.whiskies = response.data.whiskies;
 		}
@@ -30,15 +30,12 @@
 </script>
 
 <style scoped>
-	#whiskies {
+	.whiskies {
 		position: relative;
-		max-width: 1280px;
+		max-width: 1300px;
 		min-width: 500px;
 		margin: 0 auto;
 		padding: 100px 0;
-	}
-	.whiskies {
-		padding: 0 15px;
 	}
 	.whisky {
 		display: block;

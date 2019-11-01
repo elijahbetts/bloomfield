@@ -3,61 +3,105 @@
 		{
 			"id": "glengoyne-21",
 			"name": "Glengoyne 21 Year",
-			"style": "Single Malt",
+			"distillery": "Glengoyne",
 			"country": "Highlands, Scotland",
+			"style": "Single Malt",
 			"rating": "92",
+			"details": {
+				"age": "21",
+				"abv": "43.0",
+				"price": "$100",
+				"cask": "First-Fill Sherry"
+			},
 			"notes": {
 				"nose": "Christmas Cake, Dark Fruits, Chocolate",
 				"palette": "Christmas Cake, Dark Fruit, Nutty",
-				"finish": "Medium, Baking Spices, Oak, Dark Fruit, Choclate"
+				"finish": "Medium, Baking Spices, Oak, Dark Fruit, Choclate",
+				"description": ""
 			}
 		},
 		{
 			"id": "lagavulin-16",
 			"name": "Lagavulin 16 Year",
-			"style": "Peated Single Malt",
+			"distillery": "Lagavulin",
 			"country": "Islay, Scotland",
+			"style": "Peated Single Malt",
 			"rating": "93",
+			"details": {
+				"age": "16",
+				"abv": "43.0",
+				"price": "$58",
+				"cask": "Amereican Oak"
+			},
 			"notes": {
 				"nose": "Smoked Brisket, Leather, Orange Peel, Salt",
 				"palette": "Smooth, Peat Smoke, Salt",
-				"finish": "Long, Brine, Sweet Peat Smoke, Salty"
+				"finish": "Long, Brine, Sweet Peat Smoke, Salty",
+				"description": ""
 			}
 		},
 		{
 			"id": "glendronach-revival-15",
 			"name": "Glendronach Revival 15 Year",
-			"style": "Single Malt",
+			"distillery": "Glendronach",
 			"country": "Highlands, Scotland",
+			"style": "Single Malt",
+			"abv": "40",
+			"age": "15",
 			"rating": "91",
+			"details": {
+				"age": "15",
+				"abv": "46.0",
+				"price": "$68",
+				"cask": "Ex-Oloroso Sherry"
+			},
 			"notes": {
 				"nose": "Dark Fruits, Toffee, Chocolate",
 				"palette": "Dark Fruit, Oak Spice, Toffee, Chocolate",
-				"finish": "Medium, Drying,Sherry, Oak, Chocolate"
+				"finish": "Medium, Drying,Sherry, Oak, Chocolate",
+				"description": ""
 			}
 		},
 		{
 			"id": "highland-park-18",
 			"name": "Highland Park 18 Year",
+			"distillery": "Highland Park",
+			"country": "Islands, Scotland",
 			"style": "Peated Single Malt",
-			"country": "Island, Scotland",
+			"abv": "43",
+			"age": "18",
 			"rating": "91",
+			"details": {
+				"age": "18",
+				"abv": "43.0",
+				"price": "$130",
+				"cask": "Ex-Sherry"
+			},
 			"notes": {
 				"nose": "Peat, Orange Peel, Vanilla",
 				"palette": "Smooth, Balanced, Toffee, Citrus, Cereal",
-				"finish": "Medium, Dry, Oak, Salt, Peat, Pepper"
+				"finish": "Medium, Dry, Oak, Salt, Peat, Pepper",
+				"description": ""
 			}
 		},
 		{
 			"id": "hibiki-japanese-harmony",
 			"name": "Hibiki Japanese Harmony",
-			"style": "Blended",
+			"distillery": "Suntory",
 			"country": "Japan",
+			"style": "Blended",
 			"rating": "87",
+			"details": {
+				"age": "NAS",
+				"abv": "43.0",
+				"price": "$130",
+				"cask": "Amereican Oak, Japanese Mizunara, and Ex-Sherry"
+			},
 			"notes": {
 				"nose": "Apple, Floral, Oak, Malt",
 				"palette": "Rich, Cereal, Buttery, Oak, Honey",
-				"finish": "Medium, Light Smoke, Apple, Light Oak"
+				"finish": "Medium, Light Smoke, Apple, Light Oak",
+				"description": ""
 			}
 		}
 	]
