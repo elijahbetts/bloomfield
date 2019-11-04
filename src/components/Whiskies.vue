@@ -1,6 +1,19 @@
 <template>
 	<div id="whiskies">
 		<div class="whiskies">
+			<div class="subhead">
+				<span>Sort by:</span>
+				<select v-model="sorting" @change="sortBy">
+					<option value="name">Name</option>
+					<option value="style">Style</option>
+					<option value="rating" selected="selected">Rating</option>
+				</select>
+				<span>Direction:</span>
+				<select v-model="order" @change="sortBy">
+					<option value="asc">Ascending</option>
+					<option value="desc">Descending</option>
+				</select>
+			</div>
 			<router-link class="whisky" v-for="whisky in whiskies" :key="whisky.id" :to="{ path: '/review/' + whisky.id }">
 				<div class="wrapper">
 					<div class="inner">
@@ -19,17 +32,70 @@
 		name: 'Whiskies',
 		data() {
 			return {
-				whiskies: {}
+				whiskies: {},
+				sorting: 'rating',
+				order: 'desc'
+			}
+		},
+		methods: {
+			sortBy() {
+				this.sorting == 'name' && (this.order == 'asc' ? this.sortByNameAsc() : this.sortByNameDesc());
+				this.sorting == 'style' && (this.order == 'asc' ? this.sortByStyleAsc() : this.sortByStyleDesc());
+				this.sorting == 'rating' && (this.order == 'asc' ? this.sortByRatingAsc() : this.sortByRatingDesc());
+			},
+			sortByNameAsc() {
+				return this.whiskies.sort((a, b) => a.name.localeCompare(b.name));
+			},
+			sortByStyleAsc() {
+				return this.whiskies.sort((a, b) => a.style.localeCompare(b.style));
+			},
+			sortByRatingAsc() {
+				return this.whiskies.sort((a, b) => a.rating - b.rating);
+			},
+			sortByNameDesc() {
+				return this.whiskies.sort((a, b) => b.name.localeCompare(a.name));
+			},
+			sortByStyleDesc() {
+				return this.whiskies.sort((a, b) => b.style.localeCompare(a.style));
+			},
+			sortByRatingDesc() {
+				return this.whiskies.sort((a, b) => b.rating - a.rating);
 			}
 		},
 		async created() {
 			let response = await this.$http.get('/whiskies.json');
 			this.whiskies = response.data.whiskies;
+			this.sortByRatingDesc();
 		}
 	}
 </script>
 
 <style scoped>
+	.subhead {
+		text-align: right;
+		font-size: 14px;
+		color: #fdfdfd;
+		line-height: 16px;
+		margin-bottom: 10px;
+	}
+	.subhead select {
+		font-family: "Arial Black";
+		color: #fdfdfd;
+		background-color: #2d2f31;
+		border: 0;
+		border-bottom: 2px solid #fdfdfd;
+		cursor: pointer;
+		margin: 0 10px;
+		-webkit-transition: all 0.25s ease-in-out;
+		-moz-transition: all 0.25s ease-in-out;
+		transition: all 0.25s ease-in-out;
+	}
+	.subhead select:active,
+	.subhead select:focus,
+	.subhead select:hover {
+		outline: 0;
+		border-bottom-color: #cd2a1e;
+	}
 	.whiskies {
 		position: relative;
 		max-width: 1300px;

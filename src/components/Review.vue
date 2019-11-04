@@ -56,8 +56,8 @@
 		name: 'Review',
 		data() {
 			return {
-				id: this.$route.params.id,
-				whisky: {}
+				whisky: {},
+				id: this.$route.params.id
 			}
 		},
 		async created() {
@@ -65,10 +65,6 @@
 			this.whisky = response.data.whiskies.reduce((obj, w) => {
 				return w.id === this.id && (obj = w), obj;
 			}, {});
-
-			/* eslint-disable no-console */
-			console.log(this.whisky)
-			/* eslint-enable no-console */
 		}
 	}
 </script>
