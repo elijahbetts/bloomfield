@@ -3,13 +3,13 @@
 		<div class="whiskies">
 			<div class="subhead">
 				<span>Sort by:</span>
-				<select v-model="sorting" @change="sortBy">
+				<select v-model="sortType" @change="sortWhiskies">
 					<option value="name">Name</option>
 					<option value="style">Style</option>
 					<option value="rating" selected="selected">Rating</option>
 				</select>
 				<span>Direction:</span>
-				<select v-model="order" @change="sortBy">
+				<select v-model="sortOrder" @change="sortWhiskies">
 					<option value="asc">Ascending</option>
 					<option value="desc">Descending</option>
 				</select>
@@ -33,40 +33,33 @@
 		data() {
 			return {
 				whiskies: {},
-				sorting: 'rating',
-				order: 'desc'
+				sortType: 'rating',
+				sortOrder: 'desc'
 			}
 		},
+		sortMethods: {
+			asc: {
+				name: (a, b) => a.name.localeCompare(b.name),
+				style: (a, b) => a.style.localeCompare(b.style),
+				rating: (a, b) => a.rating - b.rating
+			},
+			desc: {
+				name: (a, b) => b.name.localeCompare(a.name),
+				style: (a, b) => b.style.localeCompare(a.style),
+				rating: (a, b) => b.rating - a.rating
+			},
+		},
 		methods: {
-			sortBy() {
-				this.sorting == 'name' && (this.order == 'asc' ? this.sortByNameAsc() : this.sortByNameDesc());
-				this.sorting == 'style' && (this.order == 'asc' ? this.sortByStyleAsc() : this.sortByStyleDesc());
-				this.sorting == 'rating' && (this.order == 'asc' ? this.sortByRatingAsc() : this.sortByRatingDesc());
+			sortWhiskies() {
+				const sortMethod = this.$options.sortMethods[this.sortOrder][this.sortType];
+				this.whiskies.sort(sortMethod);
 			},
-			sortByNameAsc() {
-				return this.whiskies.sort((a, b) => a.name.localeCompare(b.name));
-			},
-			sortByStyleAsc() {
-				return this.whiskies.sort((a, b) => a.style.localeCompare(b.style));
-			},
-			sortByRatingAsc() {
-				return this.whiskies.sort((a, b) => a.rating - b.rating);
-			},
-			sortByNameDesc() {
-				return this.whiskies.sort((a, b) => b.name.localeCompare(a.name));
-			},
-			sortByStyleDesc() {
-				return this.whiskies.sort((a, b) => b.style.localeCompare(a.style));
-			},
-			sortByRatingDesc() {
-				return this.whiskies.sort((a, b) => b.rating - a.rating);
-			}
 		},
 		async created() {
 			let response = await this.$http.get('/whiskies.json');
 			this.whiskies = response.data.whiskies;
-			this.sortByRatingDesc();
-		}
+			this.sortWhiskies();
+		},
 	}
 </script>
 
