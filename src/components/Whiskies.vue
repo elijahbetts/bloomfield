@@ -60,8 +60,8 @@
 			},
 		},
 		async created() {
-			let response = await this.$http.get('/whiskies.json');
-			this.whiskies = response.data.whiskies;
+			const { data: { whiskies } } = await this.$http.get('/whiskies.json');
+			this.whiskies = whiskies;
 			this.sortWhiskies();
 		},
 	}

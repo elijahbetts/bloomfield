@@ -65,8 +65,8 @@
 		},
 		methods: {
 			async getWhiskey(id) {
-				let response = await this.$http.get('/whiskies.json');
-				this.whiskey = response.data.whiskies.reduce((obj, w) => {
+				const { data: { whiskies } } = await this.$http.get('/whiskies.json');
+				this.whiskey = whiskies.reduce((obj, w) => {
 					return w.id === id && (obj = w), obj;
 				}, {});
 			}
