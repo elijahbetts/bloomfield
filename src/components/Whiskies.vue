@@ -14,12 +14,16 @@
 					<option value="desc">Descending</option>
 				</select>
 			</div>
-			<router-link class="whisky" v-for="whisky in whiskies" :key="whisky.id" :to="{ path: '/review/' + whisky.id }">
+			<router-link 
+				v-for="whiskey in whiskies" 
+				:to="{ name: 'Review', params: { id: whiskey.id, whiskey } }"
+				:key="whiskey.id" 
+				class="whisky">
 				<div class="wrapper">
 					<div class="inner">
-						<div class="cell name">{{ whisky.name }}</div>
-						<div class="cell location">{{ whisky.style }}, {{ whisky.country }}</div>
-						<div class="cell rating"><span class="number">{{ whisky.rating }}</span><img src="../assets/rating-star.svg" /></div>
+						<div class="cell name">{{ whiskey.name }}</div>
+						<div class="cell location">{{ whiskey.style }}, {{ whiskey.country }}</div>
+						<div class="cell rating"><span class="number">{{ whiskey.rating }}</span><img src="../assets/rating-star.svg" /></div>
 					</div>
 				</div>
 			</router-link>

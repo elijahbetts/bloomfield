@@ -6,43 +6,43 @@
 					<img src="../assets/bottle.png" />
 				</div>
 				<div class="intro">
-					<div class="name">{{ whisky.name }}</div>
-					<div class="style">{{ whisky.style }}</div>
-					<div class="location">{{ whisky.distillery }}, {{ whisky.country }}</div>
+					<div class="name">{{ whiskey.name }}</div>
+					<div class="style">{{ whiskey.style }}</div>
+					<div class="location">{{ whiskey.distillery }}, {{ whiskey.country }}</div>
 				</div>
 			</div>
 			<div class="body">
-				<div class="details" v-if="whisky.details">
+				<div class="details" v-if="whiskey.details">
 					<div class="row">
 						<div class="detail score">
 							<div class="title">Score</div>
-							<div class="value"><span class="number">{{ whisky.rating }}</span><img class="star" src="../assets/rating-star.svg" /></div>
+							<div class="value"><span class="number">{{ whiskey.rating }}</span><img class="star" src="../assets/rating-star.svg" /></div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="detail notes">
 							<div class="title">Notes</div>
-							<div class="value">Nose: <span class="note">{{ whisky.notes.nose }}</span></div>
-							<div class="value">Palette: <span class="note">{{ whisky.notes.palette }}</span></div>
-							<div class="value">Finish: <span class="note">{{ whisky.notes.finish }}</span></div>
+							<div class="value">Nose: <span class="note">{{ whiskey.notes.nose }}</span></div>
+							<div class="value">Palette: <span class="note">{{ whiskey.notes.palette }}</span></div>
+							<div class="value">Finish: <span class="note">{{ whiskey.notes.finish }}</span></div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="detail price">
 							<div class="title">Price</div>
-							<div class="value">{{ whisky.details.price }}</div>
+							<div class="value">{{ whiskey.details.price }}</div>
 						</div>
 						<div class="detail age">
 							<div class="title">Age</div>
-							<div class="value">{{ whisky.details.age !== 'NAS' ? whisky.details.age + ' Year' : whisky.details.age }}</div>
+							<div class="value">{{ whiskey.details.age !== 'NAS' ? whiskey.details.age + ' Year' : whiskey.details.age }}</div>
 						</div>
 						<div class="detail abv">
 							<div class="title">ABV</div>
-							<div class="value">{{ whisky.details.abv }}</div>
+							<div class="value">{{ whiskey.details.abv }}</div>
 						</div>
 						<div class="detail cask">
 							<div class="title">Cask Type</div>
-							<div class="value">{{ whisky.details.cask }}</div>
+							<div class="value">{{ whiskey.details.cask }}</div>
 						</div>
 					</div>
 				</div>
@@ -56,15 +56,20 @@
 		name: 'Review',
 		data() {
 			return {
-				whisky: {},
+				whiskey: {},
 				id: this.$route.params.id
 			}
 		},
-		async created() {
-			let response = await this.$http.get('/whiskies.json');
-			this.whisky = response.data.whiskies.reduce((obj, w) => {
-				return w.id === this.id && (obj = w), obj;
-			}, {});
+		created() {
+			this.whiskey = this.$route.params.whiskey || this.getWhiskey(this.id);
+		},
+		methods: {
+			async getWhiskey(id) {
+				let response = await this.$http.get('/whiskies.json');
+				this.whiskey = response.data.whiskies.reduce((obj, w) => {
+					return w.id === id && (obj = w), obj;
+				}, {});
+			}
 		}
 	}
 </script>
