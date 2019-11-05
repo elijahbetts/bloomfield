@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<div class="header">
+		<div class="header" ref="header">
 			<div class="inner">
 				<router-link to="/">Home</router-link>
 				<router-link to="/whiskies">Whiskies</router-link>
@@ -13,7 +13,17 @@
 
 <script>
 	export default {
-		name: 'App'
+		name: 'App',
+		methods: {
+			stickyHeader() {
+				/* eslint-disable no-console */
+				// this.$refs.header
+				
+			}
+		},
+		created() {
+			window.addEventListener('scroll', this.stickyHeader);
+		}
 	}
 </script>
 
@@ -33,6 +43,7 @@
 	.header {
 		background-color: #fdfdfd;
 		text-align: left;
+		
 	}
 	.header .inner {
 		padding: 0 15px;

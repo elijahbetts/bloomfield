@@ -1,6 +1,6 @@
 <template>
 	<div id="review">
-		<div class="review">
+		<div class="review" v-if="whisky">
 			<div class="head">
 				<div class="image">
 					<img src="../assets/bottle.png" />
@@ -12,7 +12,7 @@
 				</div>
 			</div>
 			<div class="body">
-				<div class="details" v-if="whisky.details">
+				<div class="details">
 					<div class="row">
 						<div class="detail score">
 							<div class="title">Score</div>
@@ -56,15 +56,18 @@
 		name: 'Review',
 		data() {
 			return {
-				whisky: {},
-				id: this.$route.params.id
+				id: this.$route.params.id,
+				whisky: this.$route.params.whisky
 			}
 		},
-		async created() {
-			let response = await this.$http.get('/whiskies.json');
-			this.whisky = response.data.whiskies.reduce((obj, w) => {
-				return w.id === this.id && (obj = w), obj;
-			}, {});
+		methods: {
+			async getWhisky(id) {
+				const { data: { whiskies } } = await this.$http.get('/whiskies.json');
+				this.whisky = whiskies.find(w => w.id === id);
+			}
+		},
+		created() {
+			!this.whisky && this.getWhisky(this.id);
 		}
 	}
 </script>

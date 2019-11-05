@@ -1,20 +1,20 @@
 <template>
 	<div id="whiskies">
 		<div class="whiskies">
-			<div class="subhead">
+			<div class="subnav">
 				<span>Sort by:</span>
-				<select v-model="sorting" @change="sortBy">
+				<select v-model="sortType" @change="sortWhiskies">
 					<option value="name">Name</option>
 					<option value="style">Style</option>
 					<option value="rating" selected="selected">Rating</option>
 				</select>
 				<span>Direction:</span>
-				<select v-model="order" @change="sortBy">
+				<select v-model="sortOrder" @change="sortWhiskies">
 					<option value="asc">Ascending</option>
 					<option value="desc">Descending</option>
 				</select>
 			</div>
-			<router-link class="whisky" v-for="whisky in whiskies" :key="whisky.id" :to="{ path: '/review/' + whisky.id }">
+			<router-link class="whisky" v-for="whisky in whiskies" :key="whisky.id" :to="{ name: 'Review', params: { id: whisky.id, whisky: whisky } }">
 				<div class="wrapper">
 					<div class="inner">
 						<div class="cell name">{{ whisky.name }}</div>
@@ -33,52 +33,50 @@
 		data() {
 			return {
 				whiskies: {},
-				sorting: 'rating',
-				order: 'desc'
+				sortType: 'rating',
+				sortOrder: 'desc'
+			}
+		},
+		sortMethods: {
+			'name': {
+				'asc': (a, b) => a.name.localeCompare(b.name),
+				'desc': (a, b) => b.name.localeCompare(a.name)
+			},
+			'style': {
+				'asc': (a, b) => a.style.localeCompare(b.style),
+				'desc': (a, b) => b.style.localeCompare(a.style)
+			},
+			'rating': {
+				'asc': (a, b) => a.rating.localeCompare(b.rating),
+				'desc': (a, b) => b.rating.localeCompare(a.rating)
 			}
 		},
 		methods: {
-			sortBy() {
-				this.sorting == 'name' && (this.order == 'asc' ? this.sortByNameAsc() : this.sortByNameDesc());
-				this.sorting == 'style' && (this.order == 'asc' ? this.sortByStyleAsc() : this.sortByStyleDesc());
-				this.sorting == 'rating' && (this.order == 'asc' ? this.sortByRatingAsc() : this.sortByRatingDesc());
+			async getWhiskies() {
+				const { data: { whiskies } } = await this.$http.get('/whiskies.json');
+				this.whiskies = whiskies;
+				this.sortWhiskies();
 			},
-			sortByNameAsc() {
-				return this.whiskies.sort((a, b) => a.name.localeCompare(b.name));
-			},
-			sortByStyleAsc() {
-				return this.whiskies.sort((a, b) => a.style.localeCompare(b.style));
-			},
-			sortByRatingAsc() {
-				return this.whiskies.sort((a, b) => a.rating - b.rating);
-			},
-			sortByNameDesc() {
-				return this.whiskies.sort((a, b) => b.name.localeCompare(a.name));
-			},
-			sortByStyleDesc() {
-				return this.whiskies.sort((a, b) => b.style.localeCompare(a.style));
-			},
-			sortByRatingDesc() {
-				return this.whiskies.sort((a, b) => b.rating - a.rating);
+			sortWhiskies() {
+				const sortMethod = this.$options.sortMethods[this.sortType][this.sortOrder];
+				this.whiskies.sort(sortMethod);
 			}
 		},
-		async created() {
-			let response = await this.$http.get('/whiskies.json');
-			this.whiskies = response.data.whiskies;
-			this.sortByRatingDesc();
+		created() {
+			this.getWhiskies();
 		}
 	}
 </script>
 
 <style scoped>
-	.subhead {
+	.subnav {
 		text-align: right;
 		font-size: 14px;
 		color: #fdfdfd;
 		line-height: 16px;
 		margin-bottom: 10px;
 	}
-	.subhead select {
+	.subnav select {
 		font-family: "Arial Black";
 		color: #fdfdfd;
 		background-color: #2d2f31;
@@ -90,9 +88,9 @@
 		-moz-transition: all 0.25s ease-in-out;
 		transition: all 0.25s ease-in-out;
 	}
-	.subhead select:active,
-	.subhead select:focus,
-	.subhead select:hover {
+	.subnav select:active,
+	.subnav select:focus,
+	.subnav select:hover {
 		outline: 0;
 		border-bottom-color: #cd2a1e;
 	}
