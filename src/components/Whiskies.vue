@@ -30,9 +30,9 @@
 <script>
 	export default {
 		name: 'Whiskies',
+		props: ['whiskies'],
 		data() {
 			return {
-				whiskies: {},
 				sortType: 'rating',
 				sortOrder: 'desc'
 			}
@@ -52,18 +52,13 @@
 			}
 		},
 		methods: {
-			async getWhiskies() {
-				const { data: { whiskies } } = await this.$http.get('/whiskies.json');
-				this.whiskies = whiskies;
-				this.sortWhiskies();
-			},
 			sortWhiskies() {
 				const sortMethod = this.$options.sortMethods[this.sortType][this.sortOrder];
 				this.whiskies.sort(sortMethod);
 			}
 		},
 		created() {
-			this.getWhiskies();
+			this.sortWhiskies(); // can't sort cause the prop "whickies" isn't set when loaded
 		}
 	}
 </script>

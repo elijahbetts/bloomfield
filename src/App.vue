@@ -6,23 +6,26 @@
 				<router-link to="/whiskies">Whiskies</router-link>
 			</div>
 		</div>
-
-		<router-view />
+		<router-view :whiskies="whiskies" />
 	</div>
 </template>
 
 <script>
 	export default {
 		name: 'App',
-		methods: {
-			stickyHeader() {
-				/* eslint-disable no-console */
-				// this.$refs.header
-				
+		data() {
+			return {
+				whiskies: {}
 			}
 		},
+		methods: {
+			async getWhiskies() {
+				const { data: { whiskies } } = await this.$http.get('/whiskies.json');
+				this.whiskies = whiskies;
+			},
+		},
 		created() {
-			window.addEventListener('scroll', this.stickyHeader);
+			this.getWhiskies();
 		}
 	}
 </script>
@@ -43,7 +46,6 @@
 	.header {
 		background-color: #fdfdfd;
 		text-align: left;
-		
 	}
 	.header .inner {
 		padding: 0 15px;
