@@ -54,20 +54,20 @@
 <script>
 	export default {
 		name: 'Review',
+		props: ['whiskies'],
 		data() {
 			return {
 				id: this.$route.params.id,
-				whisky: this.$route.params.whisky
+				whisky: {}
 			}
 		},
 		methods: {
-			async getWhisky(id) {
-				const { data: { whiskies } } = await this.$http.get('/whiskies.json');
-				this.whisky = whiskies.find(w => w.id === id);
+			filterWhiskies() {
+				this.whisky = this.whiskies.find(w => w.id === this.id);
 			}
 		},
 		created() {
-			!this.whisky && this.getWhisky(this.id);
+			this.filterWhiskies();
 		}
 	}
 </script>
@@ -77,6 +77,7 @@
 		position: relative;
 		max-width: 1300px;
 		min-width: 500px;
+		min-height: 1000px;
 		margin: 0 auto;
 		padding: 100px 0;
 	}
@@ -99,19 +100,21 @@
 		vertical-align: top;
 	}
 	.head .intro .name {
-		font-family: "Arial Black";
+		font-family: Arial;
 		font-size: 32px;
 		color: #fdfdfd;
 		line-height: 42px;
+		letter-spacing: 2px;
 		text-transform: uppercase;
 		margin-bottom: 25px;
 	}
 	.head .intro .style,
 	.head .intro .location {
-		font-family: "Arial Black";
+		font-family: Arial;
 		font-size: 12px;
-		color: #cd2a1e;
+		color: #fdfdfd;
 		line-height: 15px;
+		letter-spacing: 2px;
 		text-transform: uppercase;
 		margin-bottom: 10px;
 	}
@@ -136,14 +139,15 @@
 		vertical-align: top;
 	}
 	.body .detail .title {
-		font-family: "Arial Black";
+		font-family: 'Arial Black';
 		font-size: 12px;
 		color: #cd2a1e;
 		text-transform: uppercase;
+		letter-spacing: 2px;
 		margin-bottom: 10px;
 	}
 	.body .detail .value {
-		font-family: "Arial Black";
+		font-family: 'Arial Black';
 		font-size: 14px;
 		line-height: 20px;
 		vertical-align: middle;

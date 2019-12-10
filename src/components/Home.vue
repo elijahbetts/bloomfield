@@ -16,4 +16,7 @@
 	h1 {
 		color: #fdfdfd;
 	}
+	.home {
+		min-height: 1000px;
+	}
 </style>

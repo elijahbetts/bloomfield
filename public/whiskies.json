@@ -161,6 +161,86 @@
 				"finish": "Medium, Peat, Pepper, Salt",
 				"description": ""
 			}
+		},
+		{
+			"id": "aberlour-12-double-cask",
+			"name": "Aberlour 12 Year Double Cask",
+			"distillery": "Aberlour",
+			"country": "Highlands, Scotland",
+			"style": "Single Malt",
+			"rating": "81",
+			"details": {
+				"age": "12",
+				"abv": "43.0",
+				"price": "$30",
+				"cask": "Ex-Bourbon and Ex-Oloroso Sherry"
+			},
+			"notes": {
+				"nose": "Sherry, Dark Fruits, Brown Sugar",
+				"palette": "Smooth, Rich, Sherry, Oak, Chocolate",
+				"finish": "Medium, Vanilla, Oak, Spice, Chocolate",
+				"description": ""
+			}
+		},
+		{
+			"id": "ardbeg-10",
+			"name": "Ardbeg 10 Year",
+			"distillery": "Ardbeg",
+			"country": "Islay, Scotland",
+			"style": "Single Malt",
+			"rating": "84",
+			"details": {
+				"age": "10",
+				"abv": "46.0",
+				"price": "$48",
+				"cask": "Ex-Bourbon"
+			},
+			"notes": {
+				"nose": "Brine, Rubber, Vanilla, Lemon",
+				"palette": "Light, Sweet Peat, Vanilla, Lemon",
+				"finish": "Long, Medicinal, Vanilla",
+				"description": ""
+			}
+		},
+		{
+			"id": "ardbeg-corryvreckon",
+			"name": "Ardbeg Corryvreckon",
+			"distillery": "Ardbeg",
+			"country": "Islay, Scotland",
+			"style": "Single Malt",
+			"rating": "88",
+			"details": {
+				"age": "NAS",
+				"abv": "57.1",
+				"price": "$75",
+				"cask": "Ex-Bourbon and Virign French Limousin Oak"
+			},
+			"notes": {
+				"nose": "Smoke, Peat, Leather, Lemon, Orange Peel",
+				"palette": "Peat, Oak Spice, Salt",
+				"finish": "Long, Intense, Peat, Brine, Oak, Salt",
+				"description": ""
+			}
+		},
+		{
+			"id": "ardbeg-uigeadail",
+			"name": "Ardbeg Uigeadail",
+			"distillery": "Ardbeg",
+			"country": "Islay, Scotland",
+			"style": "Single Malt",
+			"rating": "87",
+			"details": {
+				"age": "NAS",
+				"abv": "54.2",
+				"price": "$62",
+				"cask": "Ex-Bourbon and Ex-Oloroso Sherry"
+			},
+			"notes": {
+				"nose": "Iodine, Peat, Sherry, Salt",
+				"palette": "Pepper, Peat, Sherry",
+				"finish": "Long, Spicy, Peat, Sherry",
+				"description": ""
+			}
 		}
 	]
 }

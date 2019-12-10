@@ -14,7 +14,7 @@
 					<option value="desc">Descending</option>
 				</select>
 			</div>
-			<router-link class="whisky" v-for="whisky in whiskies" :key="whisky.id" :to="{ name: 'Review', params: { id: whisky.id, whisky: whisky } }">
+			<router-link class="whisky" v-for="whisky in paginatedWhiskies" :key="whisky.id" :to="{ name: 'Review', params: { id: whisky.id } }">
 				<div class="wrapper">
 					<div class="inner">
 						<div class="cell name">{{ whisky.name }}</div>
@@ -23,6 +23,10 @@
 					</div>
 				</div>
 			</router-link>
+			<div class="pages">
+				<button @click="prevPage" :disabled="pageNumber == 0">Previous</button>
+				<button @click="nextPage" :disabled="pageNumber >= totalPages">Next</button>
+			</div>
 		</div>
 	</div>
 </template>
@@ -34,7 +38,9 @@
 		data() {
 			return {
 				sortType: 'rating',
-				sortOrder: 'desc'
+				sortOrder: 'desc',
+				pageNumber: 0,
+				pageLimit: 5
 			}
 		},
 		sortMethods: {
@@ -55,10 +61,26 @@
 			sortWhiskies() {
 				const sortMethod = this.$options.sortMethods[this.sortType][this.sortOrder];
 				this.whiskies.sort(sortMethod);
+			},
+			nextPage() {
+				this.pageNumber++;
+			},
+			prevPage() {
+				this.pageNumber--;
+			}
+		},
+		computed: {
+			paginatedWhiskies() {
+				const start = this.pageNumber * this.pageLimit;
+				const end = start + this.pageLimit;
+				return this.whiskies.slice(start, end);
+			},
+			totalPages() {
+				return Math.floor(this.whiskies.length / this.pageLimit);
 			}
 		},
 		created() {
-			this.sortWhiskies(); // can't sort cause the prop "whickies" isn't set when loaded
+			this.sortWhiskies();
 		}
 	}
 </script>
@@ -72,9 +94,9 @@
 		margin-bottom: 10px;
 	}
 	.subnav select {
-		font-family: "Arial Black";
+		font-family: 'Arial Black';
 		color: #fdfdfd;
-		background-color: #2d2f31;
+		background-color: #262d38;
 		border: 0;
 		border-bottom: 2px solid #fdfdfd;
 		cursor: pointer;
@@ -106,6 +128,12 @@
 		background-color: #fdfdfd;
 		margin-bottom: 15px;
 		cursor: pointer;
+		-webkit-transition: all 0.25s ease-in-out;
+		-moz-transition: all 0.25s ease-in-out;
+		transition: all 0.25s ease-in-out;
+	}
+	.whisky:hover {
+		color: #cd2a1e;
 	}
 	.whisky .wrapper {
 		height: 100%;
@@ -122,12 +150,13 @@
 	}
 	.whisky .name {
 		width: 30%;
-		font-family: "Arial Black";
+		font-family: 'Arial Black';
 		font-size: 16px;
 		line-height: 20px;
 		text-transform: uppercase;
 		vertical-align: middle;
 	}
+	
 	.whisky .location {
 		width: 30%;
 		font-size: 14px;
@@ -137,7 +166,7 @@
 	}
 	.whisky .rating {
 		width: 15%;
-		font-family: "Arial Black";
+		font-family: 'Arial Black';
 		font-size: 32px;
 		text-align: right;
 		vertical-align: middle;

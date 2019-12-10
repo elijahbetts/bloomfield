@@ -6,7 +6,7 @@
 				<router-link to="/whiskies">Whiskies</router-link>
 			</div>
 		</div>
-		<router-view :whiskies="whiskies" />
+		<router-view v-if="whiskies.length" :whiskies="whiskies" />
 	</div>
 </template>
 
@@ -15,14 +15,14 @@
 		name: 'App',
 		data() {
 			return {
-				whiskies: {}
+				whiskies: []
 			}
 		},
 		methods: {
 			async getWhiskies() {
 				const { data: { whiskies } } = await this.$http.get('/whiskies.json');
 				this.whiskies = whiskies;
-			},
+			}
 		},
 		created() {
 			this.getWhiskies();
@@ -32,7 +32,7 @@
 
 <style>
 	html {
-		background-color: #2d2f31;
+		background-color: #262d38;
 	}
 	body {
 		width: 100%;
@@ -48,15 +48,19 @@
 		text-align: left;
 	}
 	.header .inner {
+		max-width: 1280px;
 		padding: 0 15px;
+		margin: 0 auto;
 	}
 	.header a {
 		display: inline-block;
-		font-family: "Arial Black";
-		font-size: 16px;
+		font-family: 'Arial Black';
+		font-size: 12px;
 		color: #100c08;
 		line-height: 20px;
+		letter-spacing: 4px;
 		text-decoration: none;
+		text-transform: uppercase;
 		margin: 0 20px;
 		padding: 20px 0;
 		-webkit-transition: all 0.25s ease-in-out;
